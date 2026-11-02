@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 262 83% 58%;
+    --radius: 0.625rem;
+
+    /* Sémantické barvy rolí */
+    --influencer: 263 70% 58%;      /* #7c3aed */
+    --influencer-soft: 270 100% 97%;
+    --company: 175 84% 32%;         /* #0d9488 */
+    --company-soft: 166 76% 94%;
+    --cost: 32 95% 44%;             /* #d97706 */
+    --cost-soft: 48 96% 93%;
+    --success: 142 71% 35%;
+    --success-soft: 141 84% 93%;
+    --warning: 32 95% 44%;
+    --warning-soft: 48 96% 93%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .kpi-value {
+    @apply tabular text-2xl font-semibold tracking-tight;
+  }
+  .section-title {
+    @apply text-base font-semibold tracking-tight;
+  }
+  .section-desc {
+    @apply text-sm text-muted-foreground;
+  }
+  .data-table th {
+    @apply h-9 px-3 text-left align-middle text-xs font-medium uppercase tracking-wide text-muted-foreground;
+  }
+  .data-table td {
+    @apply tabular px-3 py-2 align-middle text-sm;
+  }
+  .num {
+    @apply tabular text-right;
+  }
+}
+
+/* Recharts – jemné osy a mřížka */
+.recharts-cartesian-grid line {
+  stroke: hsl(var(--border));
+}
+.recharts-cartesian-axis-tick-value {
+  fill: hsl(var(--muted-foreground));
+  font-size: 11px;
+}
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: hsl(var(--border));
+}
+
+/* Tisk / export do PDF */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  body {
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-break {
+    break-before: page;
+  }
+  .print-avoid {
+    break-inside: avoid;
+  }
+  .overflow-x-auto {
+    overflow: visible !important;
+  }
+  .data-table th,
+  .data-table td {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  .kpi-value {
+    font-size: 1.1rem;
+  }
+  .shadow-card,
+  .shadow-card-hover {
+    box-shadow: none !important;
+  }
+}
+.print-only {
+  display: none;
+}
