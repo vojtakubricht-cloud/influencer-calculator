@@ -47,7 +47,9 @@ npm run preview    # náhled produkčního buildu
 ### GitHub Pages (automaticky)
 
 Každý push do větve `main` spustí workflow `.github/workflows/deploy-pages.yml`, které spustí testy,
-sestaví aplikaci a nasadí ji na GitHub Pages. Výsledná URL je `https://<uživatel>.github.io/influencer-calculator/`.
+sestaví aplikaci a výsledek pushne do větve `gh-pages`, ze které GitHub Pages servíruje web.
+V nastavení repozitáře (Settings → Pages) musí být jako zdroj zvolena větev `gh-pages` (složka `/`).
+Výsledná URL je `https://<uživatel>.github.io/influencer-calculator/`.
 
 ### Vercel
 
